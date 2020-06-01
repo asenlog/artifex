@@ -37,6 +37,7 @@ echo ""
 echo "#####################################################################"
 echo "# Install xcode cli development tools ..."
 echo "#####################################################################"
+xcodebuild -license accept
 xcode-select --install
 echo "#####################################################################"
 echo ""
@@ -56,6 +57,9 @@ brew install node@8
 brew cask install phpstorm
 brew cask install goland
 brew cask install visual-studio-code
+brew cask install docker
+brew install kubectl
+brew install kns
 echo "#####################################################################"
 echo ""
 
@@ -77,14 +81,3 @@ cp -rf /Volumes/*.app /Applications
 hdiutil detach /Volumes/Firefox
 echo "#####################################################################"
 echo ""
-
-echo "#####################################################################"
-echo "# Installing Docker ..."
-echo "#####################################################################"
-wget -O Docker.dmg https://download.docker.com/mac/stable/Docker.dmg
-hdiutil attach Docker.dmg
-cp -rf /Volumes/*.app /Applications
-hdiutil detach /Volumes/Docker
-echo "#####################################################################"
-echo ""
-
