@@ -33,7 +33,6 @@ echo ""
 echo " by Asenlog"
 echo ""
 
-
 echo "#####################################################################"
 echo "# Install xcode cli development tools ..."
 echo "#####################################################################"
@@ -42,10 +41,28 @@ xcode-select --install
 echo "#####################################################################"
 echo ""
 
+if test ! $(which brew); then
+  echo "#####################################################################"
+  echo "# Installing HomeBrew Package Manager ..."
+  echo "#####################################################################"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    brew tap homebrew/homebrew-cask
+    brew tap homebrew/bundle
+    brew tap homebrew/cask
+    brew tap homebrew/core
+    brew tap homebrew/services
+    brew tap blendle/blendle
+fi
+
 echo "#####################################################################"
-echo "# Installing HomeBrew Package Manager and Apps ..."
+echo "# Updating HomeBrew ..."
 echo "#####################################################################"
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+brew update
+brew upgrade
+
+echo "#####################################################################"
+echo "# Installing HomeBrew Apps ..."
+echo "#####################################################################"
 brew install wget
 brew install zsh
 brew install zsh-autosuggestions
@@ -53,31 +70,33 @@ brew install go
 brew install php@7.3
 brew install php-code-sniffer
 brew install composer
-brew install node@8
 brew cask install phpstorm
 brew cask install goland
 brew cask install visual-studio-code
 brew cask install docker
 brew install kubectl
 brew install kns
+brew cask install postman
+brew cask install dbeaver-community
+brew cask install google-chrome
+brew cask install firefox
+brew cask install slack
+brew cask install iterm2
 echo "#####################################################################"
 echo ""
 
 echo "#####################################################################"
-echo "# Installing iTerm2 ..."
+echo "# Installing powerlevel10k for iTerm2 ..."
 echo "#####################################################################"
-wget -O iTerm.zip https://iterm2.com/downloads/stable/iTerm2-3_3_10.zip
-unzip iTerm.zip
-mv iTerm.app /Applications
-echo "#####################################################################"
-echo ""
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
+echo ZSH_THEME="powerlevel10k/powerlevel10k" >> ~/.zshrc
 
 echo "#####################################################################"
-echo "# Installing Firefox ..."
+echo "# Setting up git config ..."
 echo "#####################################################################"
-wget -O Firefox.dmg https://download.mozilla.org/?product=firefox-latest&os=osx&lang=en-US
-hdiutil attach Firefox.dmg
-cp -rf /Volumes/*.app /Applications
-hdiutil detach /Volumes/Firefox
-echo "#####################################################################"
-echo ""
+echo "Enter mail used by Git:"
+read gitMail
+git config set user.mail "$gitMail"
+echo "Enter full name used by Git:"
+read gitUserName
+git config set user.name "$gitUserName"
