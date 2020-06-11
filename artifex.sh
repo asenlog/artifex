@@ -81,6 +81,7 @@ brew cask install dbeaver-community
 brew cask install google-chrome
 brew cask install firefox
 brew cask install slack
+brew cask install zoomus
 brew cask install iterm2
 echo "#####################################################################"
 echo ""
@@ -90,13 +91,25 @@ echo "# Installing powerlevel10k for iTerm2 ..."
 echo "#####################################################################"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
 echo ZSH_THEME="powerlevel10k/powerlevel10k" >> ~/.zshrc
+echo "#####################################################################"
+echo ""
 
 echo "#####################################################################"
 echo "# Setting up git config ..."
 echo "#####################################################################"
 echo "Enter mail used by Git:"
-read gitMail
-git config set user.mail "$gitMail"
+read -r gitMail
+git config --global user.mail "$gitMail"
 echo "Enter full name used by Git:"
-read gitUserName
-git config set user.name "$gitUserName"
+read -r gitUserName
+git config --global user.name "$gitUserName"
+echo "#####################################################################"
+echo ""
+
+echo "#####################################################################"
+echo "# Coping utility scripts in /usr/local/bin ..."
+echo "#####################################################################"
+cp ./utils/gcu.sh /usr/local/bin
+sudo chmod +x /usr/local/bin/gcu.sh
+echo "#####################################################################"
+echo ""

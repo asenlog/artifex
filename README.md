@@ -1,8 +1,16 @@
 # Artifex
-// the Artist in latin. \
-Bootstraping a new dev machine can be a loooong process, 
-here is a script to help you out. \
-Bellow is a list of all the available software that the artist will install
+`// the Artist in latin.`
+
+Bootstrapping a new dev machine can be a long process, 
+here is a script to help you out. 
+
+```
+Artifex will provide you with:
+- Installation of dev tools (list below)
+- Git configuration
+- Terminal configuration
+- Utility scripts (desc below)
+```
 
 ## **Installed Browsers**
 - [x] [Google Chrome](https://www.google.com/chrome/)
@@ -10,7 +18,7 @@ Bellow is a list of all the available software that the artist will install
 
 ## **Installed Programming Languages**
 - [x] [Go Lang](https://golang.org/)
-- [x] [PHP](https://www.php.net/)
+- [x] [PHP](https://www.php.net/) + [Composer](https://getcomposer.org/) + [Code Sniffer](https://github.com/squizlabs/PHP_CodeSniffer/)
 
 ## **Installed IDEs && Editors**
 - [x] [GoLand](https://www.jetbrains.com/go/)
@@ -19,6 +27,8 @@ Bellow is a list of all the available software that the artist will install
 
 ## **Installed Dev Utils**
 - [x] [Postman](https://www.postman.com/)
+- [x] [wget](https://www.gnu.org/software/wget/)
+- [x] [ZSH](https://github.com/ohmyzsh/ohmyzsh)
 
 ## **Installed Virtualization Tools & Management**
 - [x] [Docker](https://www.docker.com)
@@ -30,3 +40,10 @@ Bellow is a list of all the available software that the artist will install
 
 ## **Install Communication Tools**
 - [x] [Slack](https://slack.com)
+- [x] [Zoom](https://zoom.us)
+
+## **Artifex Utility Scripts**
+Utility scripts are copied under `/usr/local/bin`  
+so they can be available from everywhere. 
+
+- gcu.sh - Git Clean Up of merged (to master || develop branch) / old branches
